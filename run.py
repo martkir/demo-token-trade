@@ -57,14 +57,12 @@ if __name__ == "__main__":
     ).buildTransaction({
         'from': wallet_address,
         'value': amount_in_wei,
-        # The 'gas' parameter sets the maximum amount of gas units that the transaction can consume.
-        # If the gas limit is too low, the transaction might fail due to running out of gas. Eexcess gas will be refunded.
-        # If multi-swap gas limit needs to be higher
+        # 'gas' sets the maximum amount of gas units the transaction can consume.
+        # If the gas limit is too low, the transaction might fail. Eexcess gas will be refunded.
+        # Complex operations e.g. multi-swap require higher gas limit.
         'gas': 2000000,
-        # The 'gasPrice' parameter sets the price per gas unit in wei. Higher gas prices can expedite the transaction processing as miners prioritize transactions with higher gas prices.
-        # Lower gas prices might result in slower transaction processing.
-        # If 'gasPrice' is not high enough the transaction might not be included in the current block - Instead
-        # remain in the mempool and be picked up in a later block.
+        # 'gasPrice' = price per gas unit in wei. Higher price = faster tx processing.
+        # If price is too low the tx may not be included in the current block.
         'gasPrice': gas_price,
         # The 'nonce' parameter is a unique number that indicates the number of transactions sent from the address.
         # It is used to prevent replay attacks and ensure the proper ordering of transactions.
